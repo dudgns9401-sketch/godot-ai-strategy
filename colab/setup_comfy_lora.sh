@@ -25,6 +25,13 @@ if [ -f "${GDRIVE_ROOT}/.env" ]; then
     set +a
 fi
 
+# Fallback default token if not loaded from .env
+if [ -z "${CIVITAI_TOKEN}" ]; then
+    CIVITAI_TOKEN="ff6290f892af1dfeaec11e5613fd292d"
+    echo "CIVITAI_TOKEN=${CIVITAI_TOKEN}" > "${GDRIVE_ROOT}/.env"
+    echo "Saved Civitai token to ${GDRIVE_ROOT}/.env"
+fi
+
 echo "=== [3/5] Setting up ComfyUI and ComfyUI-Manager ==="
 if [ ! -d "/content/ComfyUI" ]; then
     echo "Cloning ComfyUI..."
@@ -80,12 +87,18 @@ if [ -f "${MANIFEST_FILE}" ]; then
 
         if [ "${VERSION_ID}" != "REPLACE_WITH_VERSION_ID" ] && [ -n "${VERSION_ID}" ]; then
             if [ ! -f "${DRIVE_LORA}" ] && [ ! -f "${COMFY_LORA}" ]; then
-                DOWNLOAD_URL="https://civitai.com/api/download/models/${VERSION_ID}"
-                if [ -n "${CIVITAI_TOKEN}" ]; then
-                    DOWNLOAD_URL="${DOWNLOAD_URL}?token=${CIVITAI_TOKEN}"
-                fi
+                DOWNLOAD_URL="https://civitai.com/api/download/models/${VERSION_ID}?token=${CIVITAI_TOKEN}"
                 echo "Downloading LoRA [${LORA_NAME}] (Civitai ID: ${VERSION_ID})..."
-                aria2c -c -x 16 -s 16 -k 1M --header="User-Agent: Mozilla/5.0" -d "${GDRIVE_ROOT}/models_cache/loras" -o "${LORA_NAME}" "${DOWNLOAD_URL}"
+                aria2c -c -x 16 -s 16 -k 1M \
+                    --header="User-Agent: Mozilla/5.0" \
+                    --header="Authorization: Bearer ${CIVITAI_TOKEN}" \
+                    --auto-file-renaming=false \
+                    -d "${GDRIVE_ROOT}/models_cache/loras" \
+                    -o "${LORA_NAME}" \
+                    "${DOWNLOAD_URL}" || {
+                        echo "Warning: aria2c failed for ${LORA_NAME}. Retrying with curl..."
+                        curl -f -L -H "Authorization: Bearer ${CIVITAI_TOKEN}" -o "${DRIVE_LORA}" "${DOWNLOAD_URL}"
+                    }
             else
                 echo "LoRA cached: ${LORA_NAME}"
             fi
