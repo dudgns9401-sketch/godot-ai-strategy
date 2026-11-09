@@ -1,0 +1,16 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; but it can be edited by hand.
+
+config_version=5
+
+[application]
+
+config/name="Godot_AI_Strategy"
+config/features=PackedStringArray("4.3", "Forward Plus")
+config/icon="res://icon.svg"
+
+[rendering]
+
+renderer/rendering_method="forward_plus"
+textures/vram_compression/import_s3tc_bptc=true

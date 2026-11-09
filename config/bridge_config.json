@@ -1,0 +1,18 @@
+{
+  "gdrive_bridge_path": "_gdrive_mock/AI_GameDev_Bridge",
+  "default_windows_gdrive_candidates": [
+    "G:\\내 드라이브\\AI_GameDev_Bridge",
+    "G:\\My Drive\\AI_GameDev_Bridge",
+    "~\\Google Drive\\AI_GameDev_Bridge"
+  ],
+  "mappings": {
+    "raw_renders": {
+      "source_subpath": "outputs/raw_renders",
+      "target_subpath": "godot_project/assets/art_2d"
+    },
+    "maps_2d": {
+      "source_subpath": "outputs/maps_2d",
+      "target_subpath": "godot_project/assets/terrain_3d"
+    }
+  }
+}

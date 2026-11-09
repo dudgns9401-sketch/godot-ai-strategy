@@ -1,0 +1,26 @@
+# AI Models & Weights (절대 커밋 금지 - 100MB 제한 방지)
+*.safetensors
+*.ckpt
+*.pt
+*.pth
+*.bin
+*.onnx
+
+# Secrets & Env
+.env
+*.key
+*token*
+
+# Godot 4 Specific
+.godot/
+*.import
+export_presets.cfg
+
+# Python & OS
+__pycache__/
+*.pyc
+.venv/
+venv/
+.DS_Store
+Thumbs.db
+_gdrive_mock/

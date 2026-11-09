@@ -1,0 +1,29 @@
+{
+  "base_checkpoint": {
+    "name": "animagine-xl-3.1.safetensors",
+    "url": "https://huggingface.co/cagliostrolab/animagine-xl-3.1/resolve/main/animagine-xl-3.1.safetensors"
+  },
+  "loras": [
+    {
+      "game": "Wuthering_Waves",
+      "name": "wuwa_style_offset.safetensors",
+      "civitai_version_id": "REPLACE_WITH_VERSION_ID",
+      "recommended_weight": 0.75,
+      "trigger_words": ["wuthering waves style", "cel shading"]
+    },
+    {
+      "game": "Genshin_Impact",
+      "name": "genshin_anime_cel.safetensors",
+      "civitai_version_id": "REPLACE_WITH_VERSION_ID",
+      "recommended_weight": 0.8,
+      "trigger_words": ["genshin impact", "anime screencap"]
+    },
+    {
+      "game": "Honkai_Star_Rail",
+      "name": "hsr_illustration_v2.safetensors",
+      "civitai_version_id": "REPLACE_WITH_VERSION_ID",
+      "recommended_weight": 0.7,
+      "trigger_words": ["honkai star rail", "official art style"]
+    }
+  ]
+}
