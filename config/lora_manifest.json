@@ -6,10 +6,37 @@
   "loras": [
     {
       "game": "Wuthering_Waves",
-      "name": "wuwa_style_offset.safetensors",
-      "civitai_version_id": "REPLACE_WITH_VERSION_ID",
-      "recommended_weight": 0.75,
-      "trigger_words": ["wuthering waves style", "cel shading"]
+      "character": "Jinhsi",
+      "name": "Jinxsi_IL_v2.safetensors",
+      "civitai_version_id": "1159304",
+      "recommended_weight": 0.8,
+      "trigger_words": [
+        "jinxsi",
+        "1girl",
+        "grey eyes",
+        "echo2 dress",
+        "white hair",
+        "twintails",
+        "hair ribbon",
+        "earrings",
+        "wuthering waves"
+      ]
+    },
+    {
+      "game": "Wuthering_Waves",
+      "character": "Jinhsi_Pony",
+      "name": "JinhsiWUWA.safetensors",
+      "civitai_version_id": "635134",
+      "recommended_weight": 0.8,
+      "trigger_words": [
+        "1girl",
+        "grey eyes",
+        "echo2 dress",
+        "twintails",
+        "hair ribbon",
+        "earrings",
+        "Antler horns"
+      ]
     },
     {
       "game": "Genshin_Impact",

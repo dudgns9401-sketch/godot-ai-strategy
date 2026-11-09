@@ -55,7 +55,7 @@ if [ -f "${MANIFEST_FILE}" ]; then
 
         if [ ! -f "${DRIVE_CKPT}" ] && [ ! -f "${COMFY_CKPT}" ]; then
             echo "Downloading Base Checkpoint: ${BASE_NAME} via aria2c..."
-            aria2c -c -x 16 -s 16 -k 1M -d "${GDRIVE_ROOT}/models_cache/checkpoints" -o "${BASE_NAME}" "${BASE_URL}"
+            aria2c -c -x 16 -s 16 -k 1M --header="User-Agent: Mozilla/5.0" -d "${GDRIVE_ROOT}/models_cache/checkpoints" -o "${BASE_NAME}" "${BASE_URL}"
         else
             echo "Base Checkpoint cached: ${BASE_NAME}"
         fi
@@ -85,7 +85,7 @@ if [ -f "${MANIFEST_FILE}" ]; then
                     DOWNLOAD_URL="${DOWNLOAD_URL}?token=${CIVITAI_TOKEN}"
                 fi
                 echo "Downloading LoRA [${LORA_NAME}] (Civitai ID: ${VERSION_ID})..."
-                aria2c -c -x 16 -s 16 -k 1M -d "${GDRIVE_ROOT}/models_cache/loras" -o "${LORA_NAME}" "${DOWNLOAD_URL}"
+                aria2c -c -x 16 -s 16 -k 1M --header="User-Agent: Mozilla/5.0" -d "${GDRIVE_ROOT}/models_cache/loras" -o "${LORA_NAME}" "${DOWNLOAD_URL}"
             else
                 echo "LoRA cached: ${LORA_NAME}"
             fi
